@@ -7,13 +7,16 @@ let randomCounts = [];
 let total = 20;
 
 function setup() {
-  createCanvas(640, 240);
+  createCanvas(640, 1000);
   walker = new Walker();
   background(255);
   for (let i = 0; i < total; i++) {
     randomCounts[i] = 0;
   }
 }
+
+let t = 0;
+
 
 function draw() {
   let index = floor(random(randomCounts.length));
@@ -24,8 +27,11 @@ function draw() {
 
   for (let x = 0; x < randomCounts.length; x++) {
     // console.log(randomCounts[x]);
+    stroke(0);
+
     rect(x * w, height - randomCounts[x], w - 1, randomCounts[x]);
   }
+  t += 0.01;
 }
 
 class Walker {
@@ -35,7 +41,9 @@ class Walker {
   }
 
   show() {
-    stroke(0);
+    stroke(random(255), random(255), random(255));
+    // circle(random(20, 40), 180, 16);
+
     point(this.x, this.y);
   }
 
